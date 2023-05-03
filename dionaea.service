@@ -1,0 +1,15 @@
+[Unit]
+Description=honeypot dionaea service
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/dionaea
+Restart=on-failure
+RestartSec=3
+User=pi
+ExecStart=/opt/dionaea/bin/dionaea -l all,-debug -L '*'
+
+[Install]
+WantedBy=multi-user.target
