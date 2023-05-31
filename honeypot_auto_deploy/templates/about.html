@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+   <h1 class="mt-4">About</h1>
+   <h3></h3>
+   
+   <h4>Honeypot Auto Deployment</h4>
+   <pre>
+Merupakan aplikasi web ringan dan sederhana yang dibangun berdasarkan bingkai kerja bahasa pemrograman python (Django) yang berfungsi 
+memudahkan pengguna dalam melakukan instalasi honeypot secara terpusat dan otomatis melalui koneksi jaringan remote.
+Is a simple and lightweight web app built based on python framework (Django) that helps the user deploy/install honeypot automaticaly 
+through centralized remote connection.
+   </pre>
+   
+   <pre>
+Home:
+- Memuat daftar informasi honeypot yang tersimpan
+- Memuat informasi ringkas dari eksekusi "deployment" yang terakhir dilakukan
+
+Deploy:
+- Memuat daftar informasi mesin yang tersimpan
+- Memuat formulir untuk menyimpan informasi mesin baru (tombol "save") dan atau melakukan "deployment" honeypot baru (tombol "submit")
+
+Log:
+- Memuat informasi dari eksekusi "deployment" yang pernah dilakukan
+
+About:
+- Memuat informasi mendasar tentang aplikasi
+- Memuat informasi petunjuk dari setiap menu yang ada
+
+To Grafana:
+- Tombol untuk beralih ke laman monitoring Grafana
+
+To Influx:
+- Tombol untuk beralih ke laman basis data InfluxDB
+
+   </pre>
+   
+{% endblock content %}
