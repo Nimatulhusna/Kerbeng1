@@ -34,7 +34,9 @@ ABOUT
 TO GRAFANA
 
 - Tombol untuk beralih ke laman monitoring Grafana
+[To Grafana](http://10.33.102.247:3000/)
 
 TO INFLUX
 
 - Tombol untuk beralih ke laman basis data InfluxDB
+[To InfluxDB](http://10.33.102.247:8086/)
