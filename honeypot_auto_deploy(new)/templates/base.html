@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Honeypot Auto Deployment</title>
+  <style>
+    body, html {
+        height: 100%;
+        font-family: "Inconsolata", sans-serif;
+    }
+    
+    .my-button {
+        background-color: #000;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .my-button:hover {
+        background-color: #9c27b0;
+    }
+
+    .my-button2 {
+        background-color: #9c27b0;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .my-button2:hover {
+        background-color: #000;
+    }
+    
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+      transition: opacity 0.75s, visibility 0.75s;
+    }
+    
+    .loader--hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    
+    .loader::after {
+      content: "";
+      width: 75px;
+      height: 75px;
+      border: 15px solid #dddddd;
+      border-top-color: #9c27b0;
+      border-radius: 50%;
+      animation: loading 0.75s ease infinite;
+    }
+    
+    @keyframes loading {
+      from {
+        transform: rotate(0turn);
+      }
+      to {
+        transform: rotate(1turn);
+      }
+    }    
+  </style>
+</head>
+
+<body>
+  <div class="loader">
+  </div>
+
+  <div class="w3-top w3-xlarge w3-black w3-opacity w3-hover-opacity-off" id="myNavbar" style="font-family: Inconsolata">
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-bar w3-right nav">
+      <a href="{% url 'home' %}" class="w3-bar-item w3-button"><i class="fa fa-home w3-margin-right"></i><b>Kerbeng</b> 1</a>
+      <a href="{% url 'home' %}" class="w3-bar-item w3-button w3-hide-small">Home</a>
+      <a href="{% url 'deploy' %}" class="w3-bar-item w3-button w3-hide-small">Deploy</a>
+      <a href="{% url 'log' %}" class="w3-bar-item w3-button w3-hide-small">Log</a>
+      <a href="{% url 'about' %}" class="w3-bar-item w3-button w3-hide-small">About</a>
+      <a href="http://10.33.102.247:3000" class="w3-bar-item w3-button w3-hide-small">To Grafana</a>
+      <a href="http://10.33.102.247:8086" class="w3-bar-item w3-button w3-hide-small">To Influx</a>
+      <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="myFunction()">&#9776;</a>
+    </div>
+    <!-- Navbar on small screens -->
+    <div id="demo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium">
+      <a href="{% url 'home' %}" class="w3-bar-item w3-button">Home</a>
+      <a href="{% url 'deploy' %}" class="w3-bar-item w3-button">Deploy</a>
+      <a href="{% url 'log' %}" class="w3-bar-item w3-button">Log</a>
+      <a href="{% url 'about' %}" class="w3-bar-item w3-button">About</a>
+      <a href="http://10.33.102.247:3000" class="w3-bar-item w3-button">To Grafana</a>
+      <a href="http://10.33.102.247:8086" class="w3-bar-item w3-button">To Influx</a>
+    </div>
+  </div>
+
+  <!-- Page content -->
+  {% block content %}
+  {% endblock %}
+
+  <footer class="w3-center w3-black w3-padding-16">
+    <p>&copy; 2023 <a href="http://10.33.102.247" title="Kerbeng1" target="_blank" class="w3-hover-text-blue">KerBeng-1</a>. All Rights Reserved</p>
+  </footer>
+
+  <script>
+    // Function to show the loading spinner
+    window.addEventListener("load", () => {
+      const loader = document.querySelector(".loader");
+      loader.classList.add("loader--hidden");
+
+      loader.addEventListener("transitionend", () => {
+        document.body.removeChild("loader");
+      })
+    });
+  </script>
+</body>
+</html>

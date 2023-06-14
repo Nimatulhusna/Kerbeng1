@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<header class="w3-container w3-black w3-center" style="padding:100px 16px">
+	<h1 class="w3-margin w3-jumbo w3-purple w3-animate-top" style="font-family: Inconsolata">HONEYPOT AUTO DEPLOYMENT</h1>
+	<p class="w3-xlarge">Kerja Bengkel 1</p>
+</header>
+
+	<div class="w3-content w3-padding-16" style="max-width:1564px"> 
+		<div class="w3-container w3-purple">
+			<div class="w3-row">
+				<div class="w3-col.m12">
+					<div class="honeypot-list">
+						<form method="POST">
+							{% csrf_token %}
+							<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Honeypot List</h3>
+							<table class="w3-table w3-bordered w3-border w3-hoverable">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Honeypot Name</th>
+										<th>Type</th>
+										<th>Service</th>
+										<th>Updated</th>
+										<th>Machine Name</th>
+										<th>Location</th>
+										<th>Platform</th>
+										<th>IP Address</th>
+										<th>Last Status</th>
+										<th>Refresh Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for x in dat %}
+									<tr>
+										<td><input type="radio" id="hp" name="hp" value="{{x.0}}"></td>
+										<td><input type="hidden" id="name_h" name="name_h" value="{{x.1}}"/>{{x.1}}</td>
+										<td>{{x.2}}</td>
+										<td>{{x.3}}</td>
+										<td>{{x.4}}</td>
+										<td>{{x.6}}</td>
+										<td>{{x.7}}</td>
+										<td>{{x.8}}</td>
+										<td>{{x.9}}</td>
+										<td>{{x.10}}</td>
+										<td><button type="submit" class="my-button" id="submit" name="submit">Refresh</button></td>
+									</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+							<h4></h4>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> 
+
+	<div class="w3-content w3-padding-16" style="max-width:1564px">
+		<div class="w3-container w3-black">
+			<div class="w3-row">
+				<div class="w3-col.s12">
+					<div class="last-event">
+						<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Last Event</h3>
+						<table class="w3-table w3-bordered w3-border w3-hoverable">
+							<thead class="thead-dark">
+								<tr>
+									<th>#</th>
+									<th>Target Device</th>
+									<th>Action</th>
+									<th>Status</th>
+									<th>Time Done</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for log in last_event %}
+								<tr>
+									<td></td>
+									<td>{{log.target}}</td>
+									<td>{{log.action}}</td>
+									<td>{{log.status}}</td>
+									<td>{{log.time}}</td>
+								</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+						<h4></h4>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock content %}

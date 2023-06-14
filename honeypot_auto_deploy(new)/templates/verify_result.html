@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block content %}
+<header class="w3-container w3-black w3-center" style="padding:50px 16px">
+	<h1 class="w3-margin w3-jumbo w3-purple w3-animate-top" style="font-family: Inconsolata">VERIFY RESULT</h1>
+</header>
+	<div class="w3-content" style="max-width:1564px">
+		<div class="w3-container w3-black">
+      <div class="w3-row">
+         <div class="w3-col.s12">
+            <div class="result">
+               <h3 class="w3-border-bottom w3-border-light-grey w3-center">{{result.0}}</h3>
+               <ol>
+                  <li>
+                    <h5 style="font-family: Inconsolata"""><b>STEP 1:</b></h5>
+                    <details>
+                      <summary>Show</summary>
+                      <pre>{{ result.1 }}</pre>
+                    </details>
+                  </li>
+                  <li>
+                    <h5 style="font-family: Inconsolata"""><b>STEP 2:</b></h5>
+                    <details>
+                      <summary>Show</summary>
+                      <pre>{{ result.2 }}</pre>
+                    </details>
+                  </li>
+                  <li>
+                    <h5 style="font-family: Inconsolata"""><b>STEP 3:</b></h5>
+                    <details>
+                      <summary>Show</summary>
+                      <pre>{{ result.3 }}</pre>
+                    </details>
+                  </li>
+                  <li>
+                    <h5 style="font-family: Inconsolata"""><b>STEP 4:</b></h5>
+                    <details>
+                      <summary>Show</summary>
+                      <pre>{{ result.4 }}</pre>
+                    </details>
+                  </li>
+                  <li>
+                    <h5 style="font-family: Inconsolata"""><b>STEP 5:</b></h5>
+                    <details>
+                      <summary>Show</summary>
+                      <pre>{{ result.5 }}</pre>
+                    </details>
+                  </li>
+                  <li>
+                    <h5 style="font-family: Inconsolata"""><b>STEP 6:</b></h5>
+                    <details>
+                      <summary>Show</summary>
+                      <pre>{{ result.6 }}</pre>
+                    </details>
+                  </li>
+                  <li>
+                    <h5 style="font-family: Inconsolata"""><b>STEP 7:</b></h5>
+                    <details>
+                      <summary>Show</summary>
+                      <pre>{{ result.7 }}</pre>
+                    </details>
+                  </li>
+               </ol>                
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock content %}

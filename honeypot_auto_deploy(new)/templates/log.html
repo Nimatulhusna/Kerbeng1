@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<header class="w3-container w3-black w3-center" style="padding:50px 16px">
+	<h1 class="w3-margin w3-jumbo w3-purple w3-animate-top" style="font-family: Inconsolata">LOG</h1>
+</header>
+
+	<div class="w3-content w3-padding-16" style="max-width:1564px">
+		<div class="w3-container w3-black w3-padding-16">
+			<div class="w3-row">
+				<div class="w3-col.s12">
+					<div class="log">
+                    <h3></h3>
+                    <table class="w3-table w3-bordered w3-border w3-hoverable w3-purple"> 
+                        <tbody><tr>
+                            <th>Target</th>
+                            <th>Action</th>
+                            <th>Status</th>
+                            <th>Time</th>
+                            <th>Messages</th>
+                        </tr>
+                        {% for log in logs %}
+                            <tr>
+                                <td>{{log.target}}</td>
+                                <td>{{log.action}}</td>
+                                <td>{{log.status}}</td>
+                                <td>{{log.time}}</td>
+                                <td>{{log.messages }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <h3></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

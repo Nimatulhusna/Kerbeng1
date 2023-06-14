@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+   <header class="w3-container w3-black w3-center" style="padding:50px 16px">
+      <h1 class="w3-margin w3-jumbo w3-purple w3-animate-top" style="font-family: Inconsolata">About</h1>
+   </header>
+   <div class="w3-content w3-padding-16" style="max-width:1564px">
+      <div class="w3-container w3-black w3-padding-36 w3-xlarge" style="text-align: justify">
+			<div class="w3-row">
+				<div class="w3-col.s12">
+					<div class="about" style="font-family: Inconsolata""">
+                  <h4 class="w3-center w3-xxxlarge" style="color: #e99af7; font-family: Inconsolata""">Honeypot Auto Deployment</h4>
+                     <p>
+                        Merupakan aplikasi web ringan dan sederhana yang dibangun berdasarkan bingkai kerja bahasa pemrograman python (Django) yang berfungsi 
+                        memudahkan pengguna dalam melakukan instalasi honeypot secara terpusat dan otomatis melalui koneksi jaringan remote.
+                        Is a simple and lightweight web app built based on python framework (Django) that helps the user deploy/install honeypot automaticaly 
+                        through centralized remote connection.
+                     </p>
+                  
+                     <p><strong style="color: #e99af7">HOME</strong>
+                        <ol>
+                           <li>Memuat daftar informasi honeypot yang tersimpan</li>
+                           <li>Memuat informasi ringkas dari eksekusi "deployment" yang terakhir dilakukan</li>
+                        </ol>
+                     </p>
+
+                     <p><strong style="color: #e99af7">DEPLOY</strong>
+                        <ol>
+                           <li>Memuat daftar informasi mesin yang tersimpan</li>
+                           <li>Memuat formulir untuk menyimpan informasi mesin baru (tombol "save") dan atau melakukan "deployment" honeypot baru (tombol "submit")</li>
+                        </ol>
+                     </p>
+
+                     <p><strong style="color: #e99af7">LOG</strong>
+                        <ol>
+                           <li>Memuat informasi dari eksekusi "deployment" yang pernah dilakukan</li>
+                        </ol>
+                     </p>
+
+                     <p><strong style="color: #e99af7">ABOUT</strong>
+                        <ol>
+                           <li>Memuat informasi mendasar tentang aplikasi</li>
+                           <li>Memuat informasi petunjuk dari setiap menu yang ada</li>
+                        </ol>
+                     </p>
+
+                     <p><strong style="color: #e99af7">TO GRAFANA</strong>
+                        <ol>
+                           <li>Tombol untuk beralih ke laman monitoring Grafana</li>
+                        </ol>
+                     </p>
+
+                     <p><strong style="color: #e99af7">TO INFLUX</strong>
+                        <ol>
+                           <li>Tombol untuk beralih ke laman basis data InfluxDB</li>
+                        </ol>
+                     </p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+{% endblock content %}

@@ -1,0 +1,145 @@
+
+{% extends "base.html" %}
+{% block content %}
+<header class="w3-container w3-black w3-center" style="padding:50px 16px">
+	<h1 class="w3-margin w3-jumbo w3-purple w3-animate-top" style="font-family: Inconsolata">DEPLOY</h1>
+</header>
+
+	<div class="w3-content" style="max-width:1564px">
+		<div class="w3-container w3-black">
+			<div class="w3-row">
+				<div class="w3-col.s12">
+					<div class="last-event">
+						<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16 w3-center">Last Event</h3>
+						<table class="w3-table w3-bordered w3-border w3-hoverable">
+							<thead class="thead-dark">
+								<tr>
+									<th>#</th>
+									<th>Target Device</th>
+									<th>Action</th>
+									<th>Status</th>
+									<th>Time Done</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for log in last_event %}
+								<tr>
+									<td></td>
+									<td>{{log.target}}</td>
+									<td>{{log.action}}</td>
+									<td>{{log.status}}</td>
+									<td>{{log.time}}</td>
+								</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+						<h4></h4>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="w3-content" style="max-width:1564px">
+		<div class="w3-container w3-purple">
+			<div class="w3-row">
+				<div class="w3-col.s12">
+					<div class="honeypot-list">
+						<form method="POST">
+							{% csrf_token %}
+							<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16 w3-center">Saved Machine List</h3>
+							<table class="w3-table w3-bordered w3-border w3-hoverable">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Machine Name</th>
+									<th>Location</th>
+									<th>Platform</th>
+									<th>IP Address</th>
+									<th>Last State</th>
+									<th>Refresh State</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for x in dat %}
+								<tr>
+					
+									<td><input type="radio" id="mc" name="mc" value="{{x.0}}"></td>
+									<td><input type="hidden" id="name_l" name="name_l" value="{{x.1}}"/>{{x.1}}</td>
+									<td><input type="hidden" id="loc_l" name="loc_l" value="{{x.2}}"/>{{x.2}}</td>
+									<td><input type="hidden" id="platform_l" name="platform_l" value="{{x.3}}"/>{{x.3}}</td>
+									<td><input type="hidden" id="ip_l" name="ip_l" value="{{x.4}}"/>{{x.4}}</td>
+									<td><input type="hidden" id="stat" name="stat" value="{{x.9}}"/>{{x.9}}</td>
+									<td><input type="submit" class="my-button" id="submit" name="submit" value="Refresh"></td>
+					
+								</tr>
+								{% endfor %}
+							</tbody>
+							</table>
+							<h4></h4>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="w3-content" style="max-width:1564px">
+		<div class="w3-container w3-padding-16 w3-black" id="manual-deployment">
+			<h3 class="w3-border-bottom w3-border-light-grey w3-center">Manual Deployment</h3>
+			<h4>Target Machine:</h4>
+			<form method="POST">
+				{% csrf_token %}
+				<label for="sttm">{{sttm}}</label>
+				<label for="name">Machine Name:</label>
+				<input class="w3-input w3-section w3-border" type="text" id="name" name="name">
+				<label for="loc">Location:</label>
+				<input class="w3-input w3-section w3-border" type="text" id="loc" name="loc">
+				<label for="platform" class="mb-0">Platform</label>
+				<select class="w3-input w3-section w3-border" type="text" class="form-control shadow-none optionColor" id="platform" name="platform">
+					<option value="ubuntu-18" selected>Ubuntu 18.04 or below</option>
+					<option value="ubuntu+20">Ubuntu 20.04 and above</option>
+				</select>
+				<h5></h5>
+				<label for="ip">Machine IP Address:</label>
+				<input class="w3-input w3-section w3-border" type="text" id="ip" name="ip">
+				<label for="user">User Name:</label>
+				<input class="w3-input w3-section w3-border" type="text" id="user" name="user">
+				<label for="passw">Password:</label>
+				<input class="w3-input w3-section w3-border" type="password" id="passw" name="passw">
+				<h4>Remote Access:</h4>
+				<label for="r_user">User Name:</label>
+				<input class="w3-input w3-section w3-border" type="text" id="r_user" name="r_user">
+				<label for="r_pass">Password:</label>
+				<input class="w3-input w3-section w3-border" type="password" id="r_pass" name="r_pass">
+				<!-- <input type="checkbox" name="device" value="{{ device.id }}">{{device.ip_address}} - {{device.vendor}}<br> -->
+				<input type="submit" class="my-button2" id="submit" name="submit" value="Save">
+			</form>
+		</div>
+	</div>
+
+	<div class="w3-content" style="max-width:1564px">
+		<div class="w3-container w3-padding-16 w3-purple" id="manual-deployment">
+			<h3 class="w3-border-bottom w3-border-light-grey w3-center">Auto Deployment</h3>
+			<h4>Honeypot</h4>
+			<form method="POST">
+				{% csrf_token %}
+				<label for="sttm">{{sttm}}</label>
+				<label for="hname">Name:</label>
+				<input class="w3-input w3-section w3-border" type="text" id="hname" name="hname">
+				<label for="typ">Type:</label>
+				<label for="htyp">Dionaea</label>
+				<input class="w3-input" type="hidden" name="htyp" value="0"/>
+				<input class="w3-input" type="checkbox" id="htyp" name="htyp" value="dionaea">
+				<label for="a_start">Auto Start Service</label>
+				<input class="w3-input" type="hidden" name="a_start" value="0"/>
+				<input class="w3-input" type="checkbox" id="a_start" name="a_start" value="a_start">
+				<h4>Telegraf</h4>
+				<label for="ttoken">Token:</label>
+				<input class="w3-input w3-section w3-border" type="text" id="ttoken" name="ttoken">
+				<input type="submit" class="my-button" id="submit" name="submit" value="Submit">
+			</form>
+		</div>
+	</div>
+
+{% endblock content %}

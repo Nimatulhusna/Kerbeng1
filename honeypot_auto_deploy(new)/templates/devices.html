@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<header class="w3-container w3-black w3-center" style="padding:50px 16px">
+	<h1 class="w3-margin w3-jumbo w3-purple w3-animate-top" style="font-family: Inconsolata">DEVICES LIST</h1>
+</header>
+	<div class="w3-content" style="max-width:1564px">
+		<div class="w3-container w3-black">
+            <div class="w3-row">
+                <div class="w3-col.s12">
+                    <div class="devices">
+                        <h3></h3>
+                        <table class="w3-table w3-bordered w3-border w3-hoverable"> 
+                            <tbody><tr>
+                                <th>IP Address</th>
+                                <th>Hostname</th>
+                                <th>Vendor</th>
+                            </tr>
+                            {% for device in devices %}
+                                <tr>
+                                    <td>{{ device.ip_address }}</td>
+                                    <td>{{ device.hostname }}</td>
+                                    <td>{{ device.vendor }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <h3></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
